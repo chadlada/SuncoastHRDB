@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SuncoastHRDB
 {
@@ -72,13 +73,32 @@ else
                     Console.WriteLine();
                     Console.WriteLine($"Hello {employee.Name}, your department is {employee.Department} and your salary is {employee.MonthlySalary()} per month");
                     Console.WriteLine();
-}
-else if(choice =="S")
-{
+
+        }        else if(choice =="S") {
   foreach(var employee in employees)
   {
     Console.WriteLine($"Employee {employee.Name} is in department {employee.Department} and makes a salary of {employee.Salary} per month");
   }
+} else if(choice =="F") {
+var nameToSearchFor = PromptForString("What name are you searching for?");
+// Employee foundEmployee = null;
+Employee foundEmployee = employees.FirstOrDefault(employees => employees.Name ==nameToSearchFor);
+
+// foreach(var employee in employees) {
+// if(employee.Name == nameToSearchFor) {
+//   foundEmployee = employee;
+// }
+// }
+if(foundEmployee == null) {
+  Console.WriteLine();
+  Console.WriteLine("No employee by that name found.");
+                        Console.WriteLine();
+} else {
+                        Console.WriteLine();
+  Console.WriteLine($"{foundEmployee.Name} is in department {foundEmployee.Department} and makes a salary of {foundEmployee.MonthlySalary()} per month");
+                        Console.WriteLine();
+}
+
 }
 else
 {
