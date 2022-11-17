@@ -13,5 +13,11 @@ namespace SuncoastHRDB
         {
             employees.Add(newEmployee);
         }
+
+        public Employee FindOneEmployee(string name)
+        {
+Employee foundEmployee = employees.FirstOrDefault(employees => employees.Name == name);
+return foundEmployee;
+        }
     }
 }
