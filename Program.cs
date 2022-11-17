@@ -54,8 +54,9 @@ else
       {
         Console.WriteLine("What would you like to do?");
         Console.WriteLine("[A]dd employee");
-        Console.WriteLine("[Q]uit");
         Console.WriteLine("[S]how All Employees");
+        Console.WriteLine("[F]ind an Employee");
+        Console.WriteLine("[Q]uit");
 
         var choice = Console.ReadLine().ToUpper();
 
