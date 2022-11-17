@@ -44,7 +44,9 @@ else
 
     static void Main(string[] args)
     {
-      var employees = new List<Employee>();
+
+      var database = new EmployeeDatabase();
+      // var employees = new List<Employee>();
 
       Greeting();
 
@@ -69,21 +71,26 @@ else
                     employee.Department = PromptForInteger("What is your department?");
                     employee.Salary = PromptForInteger("What is your salary?");
 
-                    employees.Add(employee);
+                    database.AddEmployee(employee);
 
                     Console.WriteLine();
                     Console.WriteLine($"Hello {employee.Name}, your department is {employee.Department} and your salary is {employee.MonthlySalary()} per month");
                     Console.WriteLine();
 
+
         }        else if(choice =="S") {
+
+          var employees = database.GetAllEmployees();
   foreach(var employee in employees)
   {
     Console.WriteLine($"Employee {employee.Name} is in department {employee.Department} and makes a salary of {employee.Salary} per month");
   }
+
+
 } else if(choice =="F") {
 var nameToSearchFor = PromptForString("What name are you searching for?");
 // Employee foundEmployee = null;
-Employee foundEmployee = employees.FirstOrDefault(employees => employees.Name ==nameToSearchFor);
+Employee foundEmployee = database.FindOneEmployee(nameToSearchFor);
 
 // foreach(var employee in employees) {
 // if(employee.Name == nameToSearchFor) {
