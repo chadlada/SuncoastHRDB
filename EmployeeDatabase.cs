@@ -18,6 +18,11 @@ namespace SuncoastHRDB
             employees.Add(newEmployee);
         }
 
+        public void DeleteEmployee(Employee employeeDelete)
+        {
+employees.Remove(employeeDelete);
+        }
+
         public Employee FindOneEmployee(string name)
         {
 Employee foundEmployee = employees.FirstOrDefault(employees => employees.Name == name);

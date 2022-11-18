@@ -58,6 +58,7 @@ else
         Console.WriteLine("[A]dd employee");
         Console.WriteLine("[S]how All Employees");
         Console.WriteLine("[F]ind an Employee");
+        Console.WriteLine("[D]elete an Employee");
         Console.WriteLine("[Q]uit");
 
         var choice = Console.ReadLine().ToUpper();
@@ -108,6 +109,32 @@ if(foundEmployee == null) {
 }
 
 }
+
+else if(choice =="D") {
+var name = PromptForString("What name are you searching for?");
+Employee foundEmployee = database.FindOneEmployee(name);
+
+if(foundEmployee ==null)
+{
+  Console.WriteLine("Sorry, that employee does not exist.");
+
+}else{
+  Console.WriteLine($"{foundEmployee.Name} was found.");
+  var confirm = PromptForString("Are you sure you'd like to delete this employee? [Y/N]").ToUpper();
+
+  if(confirm == "Y")
+  {
+    database.DeleteEmployee(foundEmployee);
+    Console.WriteLine();
+    Console.WriteLine($"{foundEmployee.Name} succesfully removed from database.");
+    Console.WriteLine();
+    // Console.Clear();
+  }
+}
+
+}
+
+
 else
 {
   keepGoing=false;
